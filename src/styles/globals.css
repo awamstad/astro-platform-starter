@@ -75,4 +75,17 @@
         --btn-px: 1.5rem;
         --btn-py: 1.125rem;
     }
+
+    .btn-spin {
+        animation: spin 2s linear infinite;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
