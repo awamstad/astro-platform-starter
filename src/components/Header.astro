@@ -10,21 +10,113 @@ const navItems = [
 ];
 ---
 
-<nav class="flex flex-wrap items-center gap-4 pt-6 pb-16 sm:pt-12 sm:pb-24">
-    <a href="/">
-        <Logo />
-    </a>
-    {
-        !!navItems?.length && (
-            <ul class="flex flex-wrap gap-x-4 gap-y-1">
-                {navItems.map((item) => (
-                    <li>
-                        <a href={item.href} class="inline-block px-1.5 py-1 sm:px-3 sm:py-2">
-                            {item.linkText}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        )
-    }
+<nav class="relative flex flex-wrap items-center gap-4 pt-6 pb-16 sm:pt-12 sm:pb-24">
+    <div class="flex-1">
+        {
+            !!navItems?.length && (
+                <ul class="flex flex-wrap gap-x-4 gap-y-1">
+                    {navItems.map((item) => (
+                        <li>
+                            <a href={item.href} class="inline-block px-1.5 py-1 sm:px-3 sm:py-2">
+                                {item.linkText}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
+    </div>
+    <div class="logo-with-fireworks">
+        <a href="/">
+            <Logo />
+        </a>
+    </div>
 </nav>
+
+<style>
+.logo-with-fireworks {
+    position: relative;
+    z-index: 10;
+}
+
+.logo-with-fireworks::before,
+.logo-with-fireworks::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: fireworks 2s infinite ease-in-out;
+}
+
+.logo-with-fireworks::before {
+    background: #ff6b6b;
+    top: -10px;
+    left: 10px;
+    animation-delay: 0s;
+}
+
+.logo-with-fireworks::after {
+    background: #4ecdc4;
+    top: -15px;
+    right: 15px;
+    animation-delay: 0.3s;
+}
+
+/* Additional firework particles */
+.logo-with-fireworks {
+    overflow: visible;
+}
+
+.logo-with-fireworks::before {
+    box-shadow: 
+        20px 10px 0 #ffd93d,
+        -15px 5px 0 #6bcf7f,
+        25px -5px 0 #ff8b94,
+        -10px -10px 0 #a8e6cf,
+        15px 20px 0 #ffc3a0;
+}
+
+@keyframes fireworks {
+    0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.8) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* Sparkle effect */
+.logo-with-fireworks:hover::before,
+.logo-with-fireworks:hover::after {
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+/* Continuous gentle sparkles */
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+.logo-with-fireworks::before {
+    animation: sparkle 1.5s infinite ease-in-out;
+}
+
+.logo-with-fireworks::after {
+    animation: sparkle 1.8s infinite ease-in-out;
+    animation-delay: 0.6s;
+}
+</style>
