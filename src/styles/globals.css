@@ -75,4 +75,23 @@
         --btn-px: 1.5rem;
         --btn-py: 1.125rem;
     }
+
+    .btn-american-flag {
+        background: linear-gradient(45deg, 
+            #dc2626 0%, #dc2626 33.33%, 
+            #ffffff 33.33%, #ffffff 66.66%, 
+            #1d4ed8 66.66%, #1d4ed8 100%);
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        border: 2px solid #1f2937;
+        
+        &:hover {
+            background: linear-gradient(45deg, 
+                #b91c1c 0%, #b91c1c 33.33%, 
+                #f3f4f6 33.33%, #f3f4f6 66.66%, 
+                #1e40af 66.66%, #1e40af 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    }
 }
